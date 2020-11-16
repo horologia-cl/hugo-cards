@@ -4,4 +4,36 @@
 
 .post-title {
   margin-bottom: 0px;
+  text-decoration: none;
+}
+
+.item-list {
+  margin-bottom: 20px;
+}
+
+.item-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 18px;
+  color: #4582EC;
+}
+
+.panel-title {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 20px;
+  color: #4582EC;
+  text-align: center;
+}
+
+.panel-precio {
+  text-align: center;
+	padding: 5px 15px;
+}
+
+.item-precio {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 18px;
+  color: black;
 }
