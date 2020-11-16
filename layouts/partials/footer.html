@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row p20">
             {{ with .Site.Params.copyright }}
-                <div class="col-md-4 text-center mt25">Todos los derechos reservados <a target="_blank" href="{{ .link }}">{{ .name }}</a></div>
+                <div class="col-md-4 text-left mt25">&copy; {{ now.Format "2006"}}  {{ .name }}</div>
             {{ end }}
 
             <div class="col-md-4 text-center mt25" >
@@ -12,8 +12,11 @@
             </div>
             <div class="col-md-4 text-center mt25">
                {{ with .Site.Params.facebook }}
-                <a target="_blank" href="{{.}}"><li class="social facebook"><i class="fa fa-facebook-square"></i></li></a>
+                <a target="_blank" href="{{.}}"><li class="social facebook"><i class="fa fa-facebook"></i></li></a>
                 {{ end }}
+              {{ with .Site.Params.instagram }}
+                <a target="_blank" href="{{.}}"><li class="social instagram"><i class="fa fa-instagram"></i></li></a>
+              {{ end }}
                {{with  .Site.Params.quora }}
                 <a target="_blank" href="{{.}}"><li class="social quora"><i class="fa fa-quora"></i></li></a>
                 {{ end }}
