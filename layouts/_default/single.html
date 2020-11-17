@@ -1,6 +1,7 @@
 {{ define "main" }}
 <div class="row">
-<div class="col-md-8">
+
+{{ partial "sidebar-route.html" . }}
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
           <header class="post-header">
             <h1 class="post-title" itemprop="name headline">{{ .Title }}</h1>
@@ -61,9 +62,6 @@
             </ul>
     </div>
 </div>
-
-
-{{ partial "sidebar.html" . }}
 
 </div>
 

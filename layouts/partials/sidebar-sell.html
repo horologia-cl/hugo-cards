@@ -1,0 +1,61 @@
+<div class="col-md-6 mt20">
+
+{{ if .Params.galeria }}
+  <div id="carousel-watch" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      {{ range $key, $value := .Params.galeria }}
+        <li data-target="#carousel-watch" data-slide-to="{{ $key }}" class="{{ if eq $key 0 }} active {{ end }}"></li>
+      {{ end }}
+    </ol>
+
+    <div class="carousel-inner" role="listbox">
+      {{ range $key, $value := .Params.galeria }}
+        <div class="item {{ if eq $key 0 }} active {{ end }}">
+          <img width="600" src="{{ $value }}">
+        </div>
+      {{ end }}
+    </div>
+  </div>
+{{ else }}
+  <div class="post-img">
+    <img width="600" src="{{ .Site.BaseURL }}images/{{ .Site.Params.defaultImage }}" alt="default">
+  </div>
+{{ end }}
+
+  <div class="mt10 recent">
+    <div class="container-watch-description">
+      <div class="row">
+        <div class="col">
+          <h2>${{ .Params.precio }}</h2>
+        </div>
+        <div id="envio" class="col">
+          <small>{{ .Params.envio }}</small>
+        </div>
+        <div class="col">
+          <button type="button" class="btn btn-success">Contactar</button>
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <table class="table">
+          <tr>
+            <td>Estado</td>
+            <td>{{ .Params.estado }}</td>
+          </tr>
+          <tr>
+            <td>Disponibilidad</td>
+            <td>{{ .Params.disponibilidad }}</td>
+          </tr>
+          <tr>
+            <td>Forma de Pago</td>
+            <td>{{ .Params.formapago }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+  <br>
+
+</div>

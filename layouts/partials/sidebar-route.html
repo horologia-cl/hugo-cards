@@ -1,0 +1,7 @@
+{{ if .Params.venta }}
+  {{ partial "sidebar-sell.html" . }}
+  <div class="col-md-6">
+{{ else }}
+  {{ partial "sidebar-review.html" . }}
+  <div class="col-md-8">
+{{ end }}

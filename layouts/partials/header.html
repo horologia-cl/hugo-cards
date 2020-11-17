@@ -13,10 +13,19 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{ .Site.BaseURL }}pages/about/">Acerca de</a></li>
-        <li><a href="{{ .Site.BaseURL }}pages/contact/">Contacto</a></li>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorías <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            {{ $baseURL := .Site.BaseURL }}
+            {{ range $key, $value := .Site.Taxonomies.categories }}
+              <li><a href="{{ $baseURL }}categories/{{ $key | urlize  }}">{{ $key | humanize }}</a></li>
+            {{ end }}
+          </ul>
+          <li><a href="{{ .Site.BaseURL }}pages/about/">Acerca de</a></li>
+          <li><a href="{{ .Site.BaseURL }}pages/terminos-de-uso/">Términos de Uso</a></li>
+          <li><a href="{{ .Site.BaseURL }}pages/contact/">Contacto</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
