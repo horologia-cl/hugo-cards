@@ -1,0 +1,78 @@
+<h4>Datos Básicos</h4>
+
+<table class="table table-striped informacion">
+    <tbody>
+      {{ if .Params.marca }}
+      <tr>
+        <td>Marca</td>
+        <td>{{ .Params.marca }}</td>
+      </tr>
+      {{ end }}
+      {{ if .Params.modelo }}
+      <tr>
+        <td>Modelo</td>
+        <td>{{ .Params.modelo }}</td>
+      </tr>
+      {{ end }}
+      {{ if .Params.anioModelo }}
+      <tr>
+        <td>Año</td>
+        <td>{{ .Params.anioModelo }}</td>
+      </tr>
+      {{ end }}
+      {{ if .Params.genero }}
+      <tr>
+        <td>Género</td>
+        <td>{{.Params.genero}}</td>
+      </tr>
+      {{ end }}
+      {{ if .Params.movimiento }}
+      <tr>
+        <td>Movimiento</td>
+        <td>{{.Params.movimiento}}</td>
+      </tr>
+      {{ end }}
+      {{ if .Params.calibre }}
+      <tr>
+        <td>Calibre</td>
+        <td>{{.Params.calibre}}</td>
+      </tr>
+      {{ end }}
+      {{ if .Params.materialCaja }}
+      <tr>
+        <td>Material de la Caja</td>
+        <td>{{.Params.materialCaja}}</td>
+      </tr>
+      {{ end }}
+      {{ if .Params.diametro }}
+      <tr>
+        <td>Diámetro</td>
+        <td>{{.Params.diametro}}</td>
+      </tr>
+      {{ end }}
+      {{ if .Params.tipoCristal }}
+      <tr>
+        <td>Tipo de Cristal</td>
+        <td>{{.Params.tipoCristal}}</td>
+      </tr>
+      {{ end }}
+      {{ if .Params.materialBrazalete }}
+      <tr>
+        <td>Material del Brazalete</td>
+        <td>{{.Params.materialBrazalete}}</td>
+      </tr>
+      {{ end }}
+      {{ if .Params.resistenciaAgua }}
+      <tr>
+        <td>Resistencia al Agua</td>
+        <td>{{.Params.resistenciaAgua}}</td>
+      </tr>
+      {{ end }}
+      {{ if .Params.otros }}
+      <tr>
+        <td>Otras Características</td>
+        <td>{{.Params.otros}}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+</table>

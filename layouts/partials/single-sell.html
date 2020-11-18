@@ -1,0 +1,100 @@
+<div class="row">
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    {{ partial "carousel.html" . }}
+    <div class="col-md-6">
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">{{ .Title }}</h1>
+        <div class="post-meta">
+          <!-- published date -->
+          {{ if not .Date.IsZero }}
+          <i class="fa fa-calendar"></i> {{ .Date.Format (.Site.Params.dateformat | default "Jan 02, 2006") }}
+          {{ end }}
+          <!-- categories -->
+          {{ with .Params.categories }}
+            {{ $total := len . }}
+            {{ if gt $total 0 }}
+          en
+              {{ $total := sub $total 1 }}
+              {{ range $i, $cat := sort . }}
+          <a class="badge badge-category" href="{{ "/categories/" | relURL }}{{ $cat | urlize }}">{{ $cat | upper }}</a>
+                {{ if lt $i $total }}•{{ end }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+          <!-- tags -->
+          {{ with .Params.tags }}
+            {{ $total := len . }}
+              {{ if gt $total 0 }}
+          <br/>
+                {{ $subtotal := sub $total 1 }} <i class="fa fa-tags"></i>
+                {{ range $i, $tag := . }}
+          <a class="badge badge-tag" href="{{ "/tags/" | relURL }}{{ $tag | urlize }}">{{ $tag | lower }}</a>
+                  {{ if lt $i $subtotal }} {{ end }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          <br/>
+        </div>
+      </header>
+
+      <div class="mt10 recent">
+        <div class="container-watch-description">
+          <div class="row">
+            <div class="col">
+              <h2>${{ .Params.precio }}</h2>
+            </div>
+            <div id="envio" class="col">
+              <small>{{ .Params.envio }}</small>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-success">Contactar</button>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <table class="table">
+              <tr>
+                <td>Estado</td>
+                <td>{{ .Params.estado }}</td>
+              </tr>
+              <tr>
+                <td>Disponibilidad</td>
+                <td>{{ .Params.disponibilidad }}</td>
+              </tr>
+              <tr>
+                <td>Forma de Pago</td>
+                {{ if .Params.formapago }}
+                <td>{{ .Params.formapago }}</td>
+                {{ else }}
+                <td>{{ .Site.Params.defaultFormapago }}</td>
+                {{ end }}
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container container-info">
+      <div class="post-content" itemprop="articleBody">
+        <h3>Información</h3>
+        <div class="col-md-6">
+          {{ partial "information.html" . }}
+        </div>
+        <div class="col-md-6">
+          <h4>Descripción</h4>
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <ul class="pager">
+       {{ with .NextPage }}
+          <li><a class="next" href="{{ .Permalink }}">&laquo; {{ .Title }}</a></li>
+        {{ end }}
+        {{ with .PrevPage }}
+          <li><a class="previous" href="{{ .Permalink }}">{{ .Title }} &raquo;</a></li>
+        {{ end }}
+      </ul>
+    </div>
+  </article>
+</div>
