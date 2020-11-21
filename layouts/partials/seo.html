@@ -1,4 +1,5 @@
-<meta name="description" content="{{ if .Description }}{{ .Description | plainify }}{{ else }}{{if .IsPage}}{{ .Summary | plainify  }}{{ end }}{{ end }}"/>
+<meta name="description" content="{{ if .Site.Params.Meta.Description }}{{ .Site.Params.Meta.Description | plainify }}{{ else }}{{if .IsPage}}{{ .Summary | plainify  }}{{ end }}{{ end }}"/>
+<meta name=keywords content="{{ .Site.Params.Meta.keywords }}"/>
 <meta name="robots" content="noodp"/>
 <link rel="canonical" href="{{ .Permalink }}" />
 
@@ -21,27 +22,27 @@
 <!-- JSON-LD -->
 {{ if .IsHome }}
 <script type="application/ld+json">
-{ 
-  "@context": "http://schema.org", 
-  "@type": "WebSite", 
-  "url": "{{ .Permalink }}", 
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "{{ .Permalink }}",
   "name": "{{ .Site.Title }}",
    "author": {
       "@type": "Person",
-      "name": "{{ .Site.Params.author }}"
+      "name": "{{ .Site.Params.Meta.author }}"
     },
-  "description": "{{ .Site.Params.description }}"
+  "description": "{{ .Site.Params.Meta.description }}"
 }
 </script>
 {{ end }}
 
 {{ if .IsPage }}
 <script type="application/ld+json">
-{ 
-    "@context": "http://schema.org", 
+{
+    "@context": "http://schema.org",
     "@type": "BlogPosting",
     "headline": "{{ .Title }}",
-    "genre": "{{ range .Params.categories }}{{ . }}{{ end }}",  
+    "genre": "{{ range .Params.categories }}{{ . }}{{ end }}",
     "url": "{{ .Permalink }}",
     "datePublished": "{{ time .Date }}",
     "description": "{{ if .Description }}{{ .Description | plainify }}{{ else }}{{if .IsPage}}{{ .Summary | plainify  }}{{ end }}{{ end }}",
