@@ -87,3 +87,13 @@
 .contacto {
   width: 100%
 }
+
+.sold-img {
+  position: absolute;
+  z-index: 3;
+}
+
+.sold-img-base {
+  position: relative;
+  z-index: 1;
+}

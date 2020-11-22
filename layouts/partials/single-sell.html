@@ -47,7 +47,11 @@
               <small>{{ .Params.envio }}</small>
             </div>
             <div class="col">
-              <a href="mailto:ventas@horologia.cl?Subject=Información sobre {{ .Title }}" class="btn btn-success contacto">Contactar</a>
+              {{ if eq .Params.disponibilidad "Vendido" }}
+                <a href="#" class="btn btn-danger contacto disabled">Contactar</a>
+              {{ else }}
+                <a href="mailto:ventas@horologia.cl?Subject=Información sobre {{ .Title }}" class="btn btn-success contacto">Contactar</a>
+              {{ end }}
             </div>
           </div>
           <br>
@@ -58,8 +62,13 @@
                 <td>{{ .Params.estado }}</td>
               </tr>
               <tr>
+                {{ if eq .Params.disponibilidad "Vendido" }}
+                <td><strong>Disponibilidad</strong></td>
+                <td><strong>{{ .Params.disponibilidad }}</strong></td>
+                {{ else }}
                 <td>Disponibilidad</td>
                 <td>{{ .Params.disponibilidad }}</td>
+                {{ end }}
               </tr>
               <tr>
                 <td>Forma de Pago</td>

@@ -4,17 +4,28 @@
     <div class="row pack">
       {{ $paginator := .Paginate (where .Site.RegularPages "Section" "relojes") }}
       {{ range first 9 $paginator.Pages }}
+      {{ $disponibilidad := .Params.disponibilidad }}
         <div class="col-md-4 card">
           <a href="{{ .Permalink }}" class="index-anchor">
             <div class="panel panel-default">
               {{ if .Params.img }}
                 {{ with .Resources.Match .Params.img }}
                 {{ range . }}
-                  <img width="100%" src="{{ .RelPermalink }}" alt="{{ .Title }}">
+                  {{ if eq $disponibilidad "Vendido" }}
+                    <img width="100%" src="/images/sold.png" alt="vendido" class="sold-img">
+                    <img width="100%" src="{{ .RelPermalink }}" alt="{{ .Title }}" class="sold-img-base">
+                  {{ else }}
+                    <img width="100%" src="{{ .RelPermalink }}" alt="{{ .Title }}">
+                  {{ end }}
                 {{ end }}
               {{ end }}
               {{ else }}
-                <img width="100%" src="{{ .Site.BaseURL }}images/{{ .Site.Params.defaultImage }}" alt="{{ .Site.Title }}">
+                {{ if eq $disponibilidad "Vendido" }}
+                <img width="100%" src="/images/sold.png" alt="vendido" class="sold-img">
+                <img width="100%" src="{{ .Site.BaseURL }}images/{{ .Site.Params.defaultImage }}" alt="{{ .Title }}" class="sold-img-base">
+                {{ else }}
+                  <img width="100%" src="{{ .Site.BaseURL }}images/{{ .Site.Params.defaultImage }}" alt="{{ .Site.Title }}">
+                {{ end }}
               {{ end }}
               <div class="panel-title">
                 <h3 class="item-title">{{ .Title | truncate 25 }}</h3>
